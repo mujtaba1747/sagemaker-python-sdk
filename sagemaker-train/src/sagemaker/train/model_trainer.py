@@ -818,8 +818,10 @@ class ModelTrainer(BaseModel):
         """
         training_request = self._create_training_job_args(input_data_config=input_data_config)
 
-        if training_request.get('training_job_name', None):
-            logger.info(f"Training Job Name: {training_request.get('training_job_name', None)}")
+        job_name = training_request.get("training_job_name")
+        if job_name:
+            logger.info(f"Training Job Name: {job_name}")
+
 
         if dry_run:
             logger.info("Dry-run validation passed. No job submitted.")
